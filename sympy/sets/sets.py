@@ -911,6 +911,15 @@ class Interval(Set, EvalfMixin):
 
         See Set._union for docstring
         """
+        if len(other.args)>1:
+            A = other.args[0]
+            B = other.args[1]
+            if A == S.UniversalSet:
+                if B.is_subset(self): 
+                    return S.UniversalSet
+            if A == S.UniversalSet:
+		if B.is_subset(self)==False:	
+                    return other
         if other.is_UniversalSet:
             return S.UniversalSet
         if other.is_Interval and self._is_comparable(other):
