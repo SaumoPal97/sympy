@@ -911,7 +911,7 @@ class Interval(Set, EvalfMixin):
 
         See Set._union for docstring
         """
-        if len(other.args)>1:
+        if len(other.args)>1 and isinstance(other, Complement):
             A = other.args[0]
             B = other.args[1]
             if A == S.UniversalSet:
